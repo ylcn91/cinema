@@ -35,6 +35,8 @@ public class CinemaController {
 
     @PostMapping("/purchase")
     public ResponseEntity<?> buySeat(@RequestBody Ticket ticket) {
+
+        //refactor this.
         List<Seat> list = cinema.getFull();
         Optional<Seat> seat1 = list.stream()
                 .filter((seat2 -> seat2.getTicket().getRow()
@@ -53,6 +55,8 @@ public class CinemaController {
 
     @PostMapping("/return")
     public ResponseEntity<?> returnTicket(@RequestBody Seat seat) {
+
+        //refactor this
         Optional<Seat> seat1 = cinema.getFull().stream()
                 .filter((seat2 -> seat2.getToken().toString().equals(seat.getToken().toString()))).findAny();
         if (!seat1.isPresent()) {
